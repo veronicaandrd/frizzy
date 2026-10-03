@@ -1,16 +1,16 @@
-# Hair Weather
+## Hair Weather
 
 An experimental widget that turns live weather data into a one-line hair forecast. Built with vanilla HTML, CSS and JS, using Open-Meteo for weather data and a small rules engine with a hand-edited line bank.
 
-!(docs/preview.png)
+![Frizzy widget](images/preview.png)
 
-**Demo:** [add link]
+**Demo:** https://veronicaandrd.github.io/frizzy/
 
-## What it does
+### What it does
 
 Takes current weather for your location (or any city), classifies it into a "hair state", and shows a short line plus the temperature and the most relevant second condition. 
 
-## How it works
+### How it works
 
 ```
 fetch weather -> normalize -> classify (rules) -> pick a line -> render
@@ -20,7 +20,7 @@ fetch weather -> normalize -> classify (rules) -> pick a line -> render
 - **Line bank:** each state owns a set of lines with placeholders like `{city}`, `{t}`, `{rh}`, `{wind}`.
 - No LLM at runtime, no API keys, no build step.
 
-## Project structure
+### Project structure
 
 | File | What to edit |
 |---|---|
@@ -33,11 +33,11 @@ fetch weather -> normalize -> classify (rules) -> pick a line -> render
 
 Every rule `id` in `rules.js` needs a matching array in `lines.js`.
 
-## Tuning panel
+### Tuning panel
 
 The bottom-right panel lets you search another city, force any state to preview its copy and colors, and see the raw values behind the current result.
 
 ## Credits and data
 
 - Weather data by [Open-Meteo.com](https://open-meteo.com/) (free for non-commercial use; attribution required).
-- City name lookup uses a free reverse-geocoding serviceg.
+- City name lookup uses a free reverse-geocoding service.

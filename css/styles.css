@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Segoe UI", sans-serif;
+    background-image: url('../images/wallpaper.jpg');
+    background-size: cover;
+    color: #fff;
+}
+
+a {
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+a:hover {
+    text-underline-offset: 4px;
+    text-decoration: underline;
+}
+
+.city img, .meta img { height: 12px; width: auto; }
+
+.panel {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 240px;
+    padding: 16px;
+    border-radius: 16px;
+    background: #0006;
+    backdrop-filter: blur(10px);
+    font-size: 12px;
+    border: 1px solid #52678160;
+}
+
+.panel h2 {
+    margin: 0 0 8px 2px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.panel select,
+.panel #more {
+    display: block;
+    width: 100%;
+    margin: 0px auto 16px auto;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    left: 24px;
+    top: 24px;
+    width: 164px;
+    height: 164px;
+    border-radius: 12px;
+    padding: 15px 15px 16px 16px;
+    transition: background .4s, opacity .3s;
+    cursor: grab;
+    user-select: none;
+    touch-action: none
+}
+
+.card.loading { opacity: .5; }
+
+/* Figma-style mono noise: white grain at 40% opacity. Tune baseFrequency (grain size), the matrix offset (density) and opacity. */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .4;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.4 0 0 0 -0.7'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+
+.card>* {
+    position: relative
+}
+
+.card.drag {
+    cursor: grabbing;
+    box-shadow: 0 14px 36px #0006
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.city {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+    mix-blend-mode: overlay;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: .9;
+    margin-top: 3px
+}
+
+.ic {
+    width: 28px;
+    height: 28px;
+    padding-top: 1px;
+    flex: none;
+    mix-blend-mode: overlay;
+}
+
+.ic img {
+    display: block
+}
+
+#line {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    position: absolute;
+    bottom: 1px;
+    width: 134px;
+    text-wrap: balance;
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+    margin: 8px auto 16px auto;
+}
+
+select,
+input {
+    font: inherit;
+    font-size: 14px;
+    border: 0;
+    border-radius: 10px;
+    padding: 9px 10px;
+    background: #ffffff33;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #ffffff22;
+}
+
+button {
+    font: inherit;
+    font-size: 14px;
+    border: 0;
+    border-radius: 10px;
+    padding: 9px 10px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    background: #ffffff33;
+}
+
+button:hover {
+    background: #ffffff66;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #fff
+}
+
+.row button {
+    flex: 0 0 auto;
+    padding: 9px 12px
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    cursor: text
+}
+
+input::placeholder {
+    color: #ffffffaa
+}
+
+select option {
+    color: #000
+}
+
+pre {
+    margin: 0;
+    max-height: 100px;
+    overflow: auto;
+    white-space: pre-wrap;
+    background: #ffffff10;
+    padding: 8px;
+    border-radius: 10px
+}
+
+.credits {
+    bottom: 18px;
+    left: 19px;
+    position: absolute;
+    font-size: 13px;
+    color: #dddddd;
+}
+
+@keyframes cardIn {
+    from { opacity: 0; transform: scale(.96); }
+    to   { opacity: 1; transform: none; }
+  }
+  .card.swap { animation: cardIn .45s ease both; }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .card.swap { animation: none; }
+  }

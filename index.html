@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frizzy</title>
+<link rel="stylesheet" href="css/styles.css"></head><body><div class="card" id="card">
+  <div class="top"><div><div class="city" id="city">…</div><div class="meta" id="meta"></div></div><div class="ic" id="ic"></div></div>
+  <p id="line">Checking the sky…</p>
+  </div>
+<div class="credits"><a href="https://github.com/">GitHub</a>  ·  Weather data by <a href="https://open-meteo.com/" target="_blank">Open-Meteo.com</a> (CC BY 4.0).</div>
+<aside class="panel" aria-label="Prototype controls">
+  <button id="more">Try another line</button>
+  <h2>Force a different city</h2>
+  <form class="row" id="search"><input id="q" placeholder="e.g., Paris" aria-label="City"><button>Go</button></form>
+  <h2>Force a different condition</h2>
+  <select id="force" aria-label="Force a state"></select>
+  <pre id="dbg"></pre>
+</aside>
+<script src="js/rules.js"></script>
+<script src="js/lines.js"></script>
+<script src="js/engine.js"></script></body></html>
